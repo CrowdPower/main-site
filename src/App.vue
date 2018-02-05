@@ -1,0 +1,84 @@
+<template>
+  <div id="app">
+    <router-view/>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'App'
+}
+</script>
+
+<style>
+html {
+  margin: 0;
+  height: 100%;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+body {
+  margin: 0; background-color: #4A5056;
+}
+
+#app {
+  text-align: center;
+  color: #FFF;
+  margin: 0;
+  margin-top: 56px;
+  padding: 16px;
+}
+
+a {
+  text-decoration: none;
+}
+
+form {
+  box-shadow: 0 0 4px 0 #141618;
+  background-color: #6A6D71;
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  padding: 16px;
+  border-radius: 6px;
+  text-align: left;
+}
+
+form label {
+  font-size: 0.75em;
+}
+
+form input {
+  margin-bottom: 8px;
+  border-radius: 4px;
+  font-size: 1.2em;
+  outline-color: #70E15E;
+  box-shadow: 0 0 6px 0 #141618;
+}
+
+form button {
+  border-radius: 4px;
+  font-size: 1.4em;
+  background-color: #70E15E;
+  border-color: #70E15E;
+  padding: 8px;
+  margin-bottom: 0;
+  color: #4A5056;
+  font-weight: bold;
+  outline-color: #70E15E;
+  box-shadow: 0 0 6px 0 #141618;
+}
+
+form .error {
+  border: solid 1px #E74C3C;
+  background: #E74C3C66;
+  margin: 0;
+  margin-bottom: 8px;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+form .error:empty {
+  display: none;
+}
+</style>
