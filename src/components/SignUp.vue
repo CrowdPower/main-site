@@ -29,7 +29,7 @@ export default {
   methods: {
     validateUsername: function () {
       if (this.username === '') {
-        this.usernameErr = 'Username Required'
+        this.usernameErr = 'Username required'
         return
       }
       this.usernameErr = ''
@@ -59,6 +59,7 @@ export default {
       }
     },
     signUp: function () {
+      this.generalErr = ''
       this.validateUsername()
       this.validateEmail()
       this.validatePassword()
@@ -74,6 +75,8 @@ export default {
           email: this.email,
           password: this.password
         }
+      }).then(() => {
+        this.$router.push('/login')
       }).catch(err => {
         console.log(err)
         this.generalErr = 'Error creating user'
