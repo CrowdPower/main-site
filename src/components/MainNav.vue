@@ -15,20 +15,6 @@ export default {
 </script>
 
 <style scoped>
-nav {
-  height: 40px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #6A6D71;
-  padding: 8px;
-  box-shadow: 0 0 4px 0 #141618;
-}
-
 nav .icon {
   width: 35px;
   height: 35px;

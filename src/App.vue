@@ -33,6 +33,24 @@ a {
   text-decoration: none;
 }
 
+button {
+  cursor: pointer;
+}
+
+nav {
+  height: 40px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #6A6D71;
+  padding: 8px;
+  box-shadow: 0 0 4px 0 #141618;
+}
+
 form {
   box-shadow: 0 0 4px 0 #141618;
   background-color: #6A6D71;
