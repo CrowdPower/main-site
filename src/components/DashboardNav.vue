@@ -13,6 +13,7 @@ export default {
     logOut: function () {
       Cookies.remove('refreshToken')
       Cookies.remove('accessToken')
+      Cookies.remove('username')
       this.$router.push('/')
     }
   }
@@ -23,7 +24,6 @@ export default {
 nav .icon {
   width: 35px;
   height: 35px;
-  margin-left: 8px;
   margin-right: auto;
 }
 

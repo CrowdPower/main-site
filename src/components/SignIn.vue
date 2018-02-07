@@ -39,6 +39,7 @@ export default {
           Cookies.set('refreshToken', response.data.data.refreshToken)
         }
         Cookies.set('accessToken', response.data.data.accessToken)
+        Cookies.set('username', this.username)
         this.$router.push('/dashboard')
       }).catch(err => {
         if (err.response.status === 401) {

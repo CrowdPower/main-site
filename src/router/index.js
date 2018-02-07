@@ -28,7 +28,7 @@ let router = new Router({
 })
 
 function isAuthenticated () {
-  return Cookies.get('refreshToken') && Cookies.get('accessToken')
+  return Cookies.get('refreshToken') && Cookies.get('accessToken') && Cookies.get('username')
 }
 
 let authProtected = ['dashboard']
