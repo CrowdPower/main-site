@@ -31,25 +31,25 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-right: -16px;
+  margin-right: -32px;
   justify-content: center;
 }
 
 #intro {
-  margin-right: 16px;
+  margin-right: 32px;
   width: 400px;
+  margin-bottom: 16px;
 }
 
 #sign-up {
-  margin-right: 16px;
+  margin-right: 32px;
   width: 400px;
 }
 
 h1 {
   margin-top: 0;
   margin-bottom: 16px;
-  font-size: 3em;
-  margin-right: 16px;
+  font-size: 2.5em;
 }
 
 .power {
@@ -60,6 +60,5 @@ p.tagline {
   font-size: 1.5em;
   color: #B9BABB;
   margin-top: 0;
-  margin-right: 16px;
 }
 </style>

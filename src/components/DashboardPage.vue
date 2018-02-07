@@ -1,8 +1,12 @@
 <template>
   <div id="dashboard">
     <dashboard-nav class="dashboard-nav" />
-    <loading-icon id="loader" v-if="!user && !err"></loading-icon>
+    <loading-icon id="loader" v-if="!user && !err" />
     <p class="error" v-if="err">{{ err }}</p>
+    <div id="panes">
+      <account-info id="account-info" v-if="user && !err" :user="user" />
+      <account-info id="account-info2" v-if="user && !err" :user="user" />
+    </div>
   </div>
 </template>
 
@@ -11,6 +15,7 @@ import Utils from './Utils.js'
 import Cookies from 'js-cookie'
 import DashboardNav from './DashboardNav.vue'
 import LoadingIcon from './LoadingIcon.vue'
+import AccountInfo from './AccountInfo.vue'
 
 export default {
   created () {
@@ -30,7 +35,8 @@ export default {
   },
   components: {
     DashboardNav,
-    LoadingIcon
+    LoadingIcon,
+    AccountInfo
   }
 }
 </script>
@@ -47,5 +53,20 @@ export default {
 .error {
   margin: 16px;
   font-size: 1.2em;
+}
+
+#panes {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-right: -16px;
+  justify-content: center;
+}
+
+#panes * {
+  margin: 16px;
+  display: inline-block;
+  flex-grow: 1;
+  flex-shrink: 0;
 }
 </style>

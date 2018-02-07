@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/Home'
-import Login from '@/components/Login'
-import Dashboard from '@/components/Dashboard'
+import Home from '@/components/HomePage'
+import Login from '@/components/LoginPage'
+import Dashboard from '@/components/DashboardPage'
 import Cookies from 'js-cookie'
 
 Vue.use(Router)

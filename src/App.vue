@@ -26,7 +26,7 @@ body {
   color: #FFF;
   margin: 0;
   margin-top: 56px;
-  padding: 16px;
+  padding: 32px;
 }
 
 a {

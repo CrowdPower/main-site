@@ -1,7 +1,7 @@
 <template>
 <nav>
-  <a href="/"><img src="/static/icon.png" class="icon"></a>
-  <a href="/" v-bind:class="{'selected': (selected === 'sign-up')}">Sign up</a>
+  <a href="/#/"><img src="/static/icon.png" class="icon"></a>
+  <a href="/#/" v-bind:class="{'selected': (selected === 'sign-up')}">Sign up</a>
   <a href="/#/login" v-bind:class="{'selected': (selected === 'sign-in')}">Sign in</a>
 </nav>
 </template>
