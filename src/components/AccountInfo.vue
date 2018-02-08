@@ -38,6 +38,7 @@ export default {
 <style scoped>
 #info {
   min-width: 400px;
+  max-width: 600px;
   display: flex;
 }
 

@@ -17,6 +17,20 @@ function get (path) {
     url: process.env.API_PATH + path,
     headers: { Authorization: 'Bearer ' + Cookies.get('accessToken') }
   }
+  return request(params)
+}
+
+function post (path, body) {
+  let params = {
+    method: 'POST',
+    url: process.env.API_PATH + path,
+    data: body,
+    headers: { Authorization: 'Bearer ' + Cookies.get('accessToken') }
+  }
+  return request(params)
+}
+
+function request (params) {
   return axios(params).then(response => {
     return response.data.data
   }).catch(err => {
@@ -27,11 +41,12 @@ function get (path) {
       })
     } else {
       console.log(err)
-      return err
+      throw err
     }
   })
 }
 
 export default {
-  get
+  get,
+  post
 }

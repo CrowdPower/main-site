@@ -18,15 +18,19 @@ html {
 }
 
 body {
-  margin: 0; background-color: #4A5056;
+  margin: 0;
+  background-color: #4A5056;
 }
 
 #app {
   text-align: center;
   color: #FFF;
-  margin: 0;
   margin-top: 56px;
-  padding: 32px;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 16px;
+  max-width: 1024px;
 }
 
 a {
