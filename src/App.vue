@@ -115,4 +115,24 @@ form .error {
 form .error:empty {
   display: none;
 }
+
+.text-button {
+  margin-left: 8px;
+  margin-right: 8px;
+  color: #FFF;
+  transition: 0.2s;
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  padding: 0;
+}
+
+.text-button:hover {
+  color: #B9BABB;
+}
+
+.text-button.selected {
+  color: #B9BABB;
+}
 </style>

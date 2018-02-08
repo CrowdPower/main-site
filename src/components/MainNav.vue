@@ -1,8 +1,8 @@
 <template>
 <nav>
   <a href="/#/"><img src="/static/icon.png" class="icon"></a>
-  <a href="/#/" v-bind:class="{'selected': (selected === 'sign-up')}">Sign up</a>
-  <a href="/#/login" v-bind:class="{'selected': (selected === 'sign-in')}">Sign in</a>
+  <a href="/#/" :class="[selected === 'sign-up' ? 'selected' : '', 'text-button']">Sign up</a>
+  <a href="/#/login" :class="[selected === 'sign-in' ? 'selected' : '', 'text-button']">Sign in</a>
 </nav>
 </template>
 
@@ -30,14 +30,5 @@ nav a {
   margin-right: 8px;
   color: #FFF;
   transition: 0.2s;
-}
-
-nav a.selected {
-  color: #B9BABB;
-  transition: 0.2s;
-}
-
-nav a:hover {
-  color: #B9BABB;
 }
 </style>
