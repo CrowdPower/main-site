@@ -31,7 +31,7 @@ export default {
       this.generalErr = ''
       axios({
         method: 'GET',
-        url: process.env.API_PATH + '/users/' + this.username + '/authorize?password=' + this.password
+        url: process.env.API_PATH + '/v1/users/' + this.username + '/authorize?password=' + this.password
       }).then(response => {
         if (this.rememberMe) {
           Cookies.set('refreshToken', response.data.data.refreshToken, { expires: 365 })

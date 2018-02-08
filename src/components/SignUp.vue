@@ -35,7 +35,7 @@ export default {
       this.usernameErr = ''
       axios({
         method: 'GET',
-        url: process.env.API_PATH + '/users/exists?username=' + this.username
+        url: process.env.API_PATH + '/v1/users/exists?username=' + this.username
       }).then(result => {
         if (result.data.data.exists) {
           this.usernameErr = 'Username taken'
