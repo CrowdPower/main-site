@@ -4,40 +4,43 @@ import Cookies from 'js-cookie'
 function updateTokens () {
   return axios({
     method: 'GET',
-    url: process.env.API_PATH + '/users/' + Cookies.get('username') + '/token',
+    url: makeAbsolute('/v1/users/' + Cookies.get('username') + '/token'),
     headers: { Authorization: 'Bearer ' + Cookies.get('refreshToken') }
   }).then(response => {
     Cookies.set('accessToken', response.data.data.accessToken)
   })
 }
 
-function get (path) {
-  let params = {
-    method: 'GET',
-    url: process.env.API_PATH + path,
-    headers: { Authorization: 'Bearer ' + Cookies.get('accessToken') }
-  }
-  return request(params)
+function makeAbsolute (url) {
+  return process.env.API_PATH + url
 }
 
-function post (path, body) {
+function get (url) {
+  let params = {
+    method: 'GET',
+    headers: { Authorization: 'Bearer ' + Cookies.get('accessToken') }
+  }
+  return request(params, url)
+}
+
+function post (url, body) {
   let params = {
     method: 'POST',
-    url: process.env.API_PATH + path,
     data: body,
     headers: { Authorization: 'Bearer ' + Cookies.get('accessToken') }
   }
-  return request(params)
+  return request(params, url)
 }
 
-function request (params) {
+function request (params, url) {
+  params.url = url
   return axios(params).then(response => {
-    return response.data.data
+    return response.data
   }).catch(err => {
     if (err.response && (err.response.status === 400 || err.response.status === 401)) {
       return updateTokens().then(() => {
         params.headers.Authorization = 'Bearer ' + Cookies.get('accessToken')
-        return axios(params)
+        return axios(params).then(response => response.data)
       })
     } else {
       console.log(err)
@@ -48,5 +51,6 @@ function request (params) {
 
 export default {
   get,
-  post
+  post,
+  makeAbsolute
 }

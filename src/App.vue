@@ -55,15 +55,18 @@ nav {
   box-shadow: 0 0 4px 0 #141618;
 }
 
-form {
+.box {
   box-shadow: 0 0 4px 0 #141618;
   background-color: #6A6D71;
+  padding: 16px;
+  border-radius: 6px;
+}
+
+form {
   display: flex;
   flex-direction: column;
   width: 350px;
-  padding: 16px;
   padding-top: 8px;
-  border-radius: 6px;
   text-align: left;
 }
 

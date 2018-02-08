@@ -10,7 +10,7 @@ import Cookies from 'js-cookie'
 
 export default {
   methods: {
-    logOut: function () {
+    logOut () {
       Cookies.remove('refreshToken')
       Cookies.remove('accessToken')
       Cookies.remove('username')

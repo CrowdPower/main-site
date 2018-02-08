@@ -4,8 +4,8 @@
     <loading-icon id="loader" v-if="!user && !err" />
     <p class="error" v-if="err">{{ err }}</p>
     <div id="panes">
-      <account-info v-if="user && !err" :user="user" />
-      <deposit-maker v-if="user && !err" :user="user" />
+      <deposit-info v-if="user && !err" :username="user.username" />
+      <deposit-maker v-if="user && !err" :username="user.username" />
     </div>
   </div>
 </template>
@@ -15,19 +15,19 @@ import Utils from './Utils.js'
 import Cookies from 'js-cookie'
 import DashboardNav from './DashboardNav.vue'
 import LoadingIcon from './LoadingIcon.vue'
-import AccountInfo from './AccountInfo.vue'
+import DepositInfo from './DepositInfo.vue'
 import DepositMaker from './DepositMaker.vue'
 
 export default {
   created () {
-    Utils.get('/users/' + Cookies.get('username')).then(user => {
-      this.user = user
+    Utils.get(Utils.makeAbsolute('/v1/users/' + Cookies.get('username'))).then(response => {
+      this.user = response.data
     }).catch(err => {
       console.log(err)
       this.err = 'Could not authenticate with server'
     })
   },
-  data: () => {
+  data () {
     return {
       user: undefined,
       err: ''
@@ -36,7 +36,7 @@ export default {
   components: {
     DashboardNav,
     LoadingIcon,
-    AccountInfo,
+    DepositInfo,
     DepositMaker
   }
 }
