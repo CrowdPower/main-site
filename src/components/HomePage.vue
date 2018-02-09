@@ -31,18 +31,21 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-right: -32px;
+  margin-right: -16px;
+  margin-left: -16px;
   justify-content: center;
 }
 
 #intro {
-  margin-right: 32px;
+  margin-right: 16px;
+  margin-left: 16px;
   width: 400px;
   margin-bottom: 16px;
 }
 
 #sign-up {
-  margin-right: 32px;
+  margin-right: 16px;
+  margin-left: 16px;
   width: 400px;
 }
 
