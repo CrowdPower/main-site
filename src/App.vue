@@ -135,4 +135,8 @@ form .error:empty {
 .text-button.selected {
   color: #B9BABB;
 }
+
+.text-button:disabled {
+  color: #B9BABB;
+}
 </style>

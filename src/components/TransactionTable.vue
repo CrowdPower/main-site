@@ -10,9 +10,7 @@
       </thead>
       <tbody>
         <tr v-for="row in pageContent" :key="row.id">
-          <td v-for="column in columns" :key="column">
-            {{row[column]}}
-          </td>
+          <td v-for="column in columns" :key="column">{{row[column]}}</td>
         </tr>
       </tbody>
     </table>
@@ -57,12 +55,13 @@ export default {
       this.pageContent = []
       let pageStart = (this.currentPage - 1) * this.pageSize
       if (this.moreContent && pageStart + this.pageSize < this.content.length) {
-        console.log('getting more data')
         this.$emit('moreData')
       } else {
-        console.log('page start is ' + pageStart)
-        console.log('content is ' + this.content)
         this.pageContent = this.content.slice(pageStart, pageStart + this.pageSize)
+        // pad with empty items so the table always has the same row count
+        while (this.pageContent.length < this.pageSize) {
+          this.pageContent.push({})
+        }
       }
     },
     nextPage () {
@@ -99,8 +98,35 @@ export default {
   width: 100%;
 }
 
-.transactions {
-  min-width: 200px;
-  max-width: 300px;
+#transactions {
+  border-radius: 3px;
+  border: 2px solid #4A5056;
+  margin-bottom: 16px;
+  width: 100%;
+  background-color: #4A5056;
 }
+
+#transactions th {
+  padding: 8px;
+  font-size: 1.2em;
+}
+
+#transactions tr {
+  background-color: #4A5056;
+  height: 2.5em;
+}
+
+#transactions tr:nth-child(odd) {
+  background-color: #6A6D71;
+  border-radius: 4px;
+}
+
+#transactions td {
+  padding: 8px;
+}
+
+#transactions td:empty {
+  background-color: #4A5056;
+}
+
 </style>

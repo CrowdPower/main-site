@@ -46,8 +46,6 @@ export default {
       }
       this.gettingData = true
       Utils.get(this.nextDeposits).then(response => {
-        console.log('got response ')
-        console.log(response)
         this.deposits = this.deposits.concat(response.data)
         this.nextDeposits = response.nextLink
         this.gettingData = false
