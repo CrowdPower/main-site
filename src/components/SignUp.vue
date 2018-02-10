@@ -69,7 +69,7 @@ export default {
 
       axios({
         method: 'POST',
-        url: process.env.API_PATH + '/users',
+        url: process.env.API_PATH + '/v1/users',
         data: {
           username: this.username,
           email: this.email,
