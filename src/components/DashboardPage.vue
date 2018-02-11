@@ -5,6 +5,7 @@
     <p class="error" v-if="err">{{ err }}</p>
     <div id="panes">
       <deposit-info v-if="user && !err" :username="user.username" />
+      <payment-info v-if="user && !err" :username="user.username" />
       <deposit-maker v-if="user && !err" :username="user.username" />
     </div>
   </div>
@@ -16,6 +17,7 @@ import Cookies from 'js-cookie'
 import DashboardNav from './DashboardNav.vue'
 import LoadingIcon from './LoadingIcon.vue'
 import DepositInfo from './DepositInfo.vue'
+import PaymentInfo from './PaymentInfo.vue'
 import DepositMaker from './DepositMaker.vue'
 
 export default {
@@ -37,6 +39,7 @@ export default {
     DashboardNav,
     LoadingIcon,
     DepositInfo,
+    PaymentInfo,
     DepositMaker
   }
 }

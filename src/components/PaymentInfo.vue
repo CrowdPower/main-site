@@ -1,14 +1,14 @@
 <template>
   <div id="info" class="box">
-    <h3>Deposits</h3>
+    <h3>Payments</h3>
     <button id="refresh" class="text-button" @click="refresh" :disabled="gettingData">&#x21bb;</button>
     <loading-icon class="small-loader" v-if="!username && !err"></loading-icon>
     <p class="error" v-if="err">{{ err }}</p>
     <!-- '&& true' makes moreContent a boolean -->
     <transaction-table
-      :columns="['amount', 'time']"
-      :content="this.deposits"
-      :moreContent="this.nextDeposits && true"
+      :columns="['url', 'amount', 'time']"
+      :content="this.payments"
+      :moreContent="this.nextPayments && true"
       v-on:moreData="moreData"
     />
   </div>
@@ -29,8 +29,8 @@ export default {
   data () {
     return {
       err: '',
-      deposits: [],
-      nextDeposits: Utils.makeAbsolute('/v1/users/' + this.username + '/deposits'),
+      payments: [],
+      nextPayments: Utils.makeAbsolute('/v1/users/' + this.username + '/payments'),
       gettingData: false
     }
   },
@@ -47,19 +47,19 @@ export default {
         return
       }
       this.gettingData = true
-      Utils.get(this.nextDeposits).then(response => {
-        this.deposits = this.deposits.concat(response.data)
-        this.nextDeposits = response.nextLink
+      Utils.get(this.nextPayments).then(response => {
+        this.payments = this.payments.concat(response.data)
+        this.nextPayments = response.nextLink
         this.gettingData = false
       }).catch(err => {
-        this.err = 'Error getting deposits'
+        this.err = 'Error getting payments'
         console.log(err)
         this.gettingData = false
       })
     },
     refresh () {
-      this.nextDeposits = Utils.makeAbsolute('/v1/users/' + this.username + '/deposits')
-      this.deposits = []
+      this.nextPayments = Utils.makeAbsolute('/v1/users/' + this.username + '/payments')
+      this.payments = []
       this.moreData()
     }
   }

@@ -139,4 +139,12 @@ form .error:empty {
 .text-button:disabled {
   color: #B9BABB;
 }
+
+.small-loader {
+  margin: auto;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  width: 64px;
+  height: 64px;
+}
 </style>
