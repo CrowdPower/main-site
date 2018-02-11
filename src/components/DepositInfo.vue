@@ -1,5 +1,7 @@
 <template>
   <div id="info" class="box">
+    <h3>Deposits</h3>
+    <button id="refresh" class="text-button" @click="refresh" :disabled="gettingData">&#x21bb;</button>
     <loading-icon id="loader" v-if="!username && !err"></loading-icon>
     <p class="error" v-if="err">{{ err }}</p>
     <!-- '&& true' makes moreContent a boolean -->
@@ -54,16 +56,27 @@ export default {
         console.log(err)
         this.gettingData = false
       })
+    },
+    refresh () {
+      this.nextDeposits = Utils.makeAbsolute('/v1/users/' + this.username + '/deposits')
+      this.deposits = []
+      this.moreData()
     }
   }
 }
 </script>
 
 <style scoped>
+h3 {
+  display: block;
+  float: left;
+  margin: 0;
+  margin-bottom: 8px;
+}
+
 #info {
   min-width: 400px;
   max-width: 600px;
-  display: flex;
 }
 
 #loader {
@@ -77,5 +90,9 @@ export default {
 .error {
   margin: 16px;
   font-size: 1.2em;
+}
+
+#refresh {
+  float: right;
 }
 </style>

@@ -82,6 +82,7 @@ export default {
   },
   watch: {
     content () {
+      this.currentPage = Math.min(this.currentPage, 1 + this.content.length / this.pageSize)
       this.getPage()
     }
   }
