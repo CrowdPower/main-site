@@ -28,6 +28,7 @@ export default {
   },
   methods: {
     makeDeposit: function () {
+      this.err = ''
       let toSend = parseInt(this.amount)
       this.amount = 0
       Utils.post(Utils.makeAbsolute('/v1/users/' + this.username + '/deposit'), { amount: toSend }).catch(err => {

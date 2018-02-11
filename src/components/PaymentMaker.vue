@@ -30,6 +30,7 @@ export default {
   },
   methods: {
     makePayment: function () {
+      this.err = ''
       let toSend = parseInt(this.amount)
       let toUrl = this.url
       this.amount = 0
