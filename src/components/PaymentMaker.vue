@@ -1,8 +1,9 @@
 <template>
-  <form class="box" @submit.prevent="makeDeposit">
+  <form class="box" @submit.prevent="makePayment">
     <p class="error">{{ err }}</p>
     <input type="number" name="amount" v-model="amount" placeholder="amount" min="0">
-    <button>Deposit</button>
+    <input type="url" name="url" v-model="url" placeholder="url">
+    <button>Payment</button>
   </form>
 </template>
 
@@ -20,6 +21,7 @@ export default {
   data () {
     return {
       amount: 0,
+      url: '',
       err: ''
     }
   },
@@ -27,11 +29,13 @@ export default {
     LoadingIcon
   },
   methods: {
-    makeDeposit: function () {
+    makePayment: function () {
       let toSend = parseInt(this.amount)
+      let toUrl = this.url
       this.amount = 0
-      Utils.post(Utils.makeAbsolute('/v1/users/' + this.username + '/deposit'), { amount: toSend }).catch(err => {
-        this.err = 'Error making deposit'
+      this.url = ''
+      Utils.post(Utils.makeAbsolute('/v1/users/' + this.username + '/payment'), { amount: toSend, url: toUrl }).catch(err => {
+        this.err = 'Error making payment'
         console.log(err)
       })
     }

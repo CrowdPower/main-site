@@ -7,6 +7,7 @@
       <deposit-info v-if="user && !err" :username="user.username" />
       <payment-info v-if="user && !err" :username="user.username" />
       <deposit-maker v-if="user && !err" :username="user.username" />
+      <payment-maker v-if="user && !err" :username="user.username" />
     </div>
   </div>
 </template>
@@ -19,6 +20,7 @@ import LoadingIcon from './LoadingIcon.vue'
 import DepositInfo from './DepositInfo.vue'
 import PaymentInfo from './PaymentInfo.vue'
 import DepositMaker from './DepositMaker.vue'
+import PaymentMaker from './PaymentMaker.vue'
 
 export default {
   created () {
@@ -40,7 +42,8 @@ export default {
     LoadingIcon,
     DepositInfo,
     PaymentInfo,
-    DepositMaker
+    DepositMaker,
+    PaymentMaker
   }
 }
 </script>
