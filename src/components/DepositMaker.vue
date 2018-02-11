@@ -41,8 +41,8 @@ export default {
 
 <style scoped>
 form {
-  min-width: 200px;
-  max-width: 300px;
+  min-width: 100px;
+  max-width: 150px;
 }
 
 .error {

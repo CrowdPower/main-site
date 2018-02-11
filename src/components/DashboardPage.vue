@@ -4,10 +4,14 @@
     <loading-icon id="loader" v-if="!user && !err" />
     <p class="error" v-if="err">{{ err }}</p>
     <div id="panes">
-      <deposit-info v-if="user && !err" :username="user.username" />
-      <payment-info v-if="user && !err" :username="user.username" />
-      <deposit-maker v-if="user && !err" :username="user.username" />
-      <payment-maker v-if="user && !err" :username="user.username" />
+      <div>
+        <deposit-info v-if="user && !err" :username="user.username" />
+        <payment-info v-if="user && !err" :username="user.username" />
+      </div>
+      <div>
+        <deposit-maker v-if="user && !err" :username="user.username" />
+        <payment-maker v-if="user && !err" :username="user.username" />
+      </div>
     </div>
   </div>
 </template>
@@ -62,7 +66,8 @@ export default {
   font-size: 1.2em;
 }
 
-#panes {
+#panes > div {
+  align-items: flex-start;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
