@@ -65,12 +65,12 @@ export default {
 }
 
 .subtitle {
-  font-size: 0.7em;
+  font-size: 1.5em;
   margin-top: 0;
 }
 
 .balance {
-  font-size: 4em;
+  font-size: 8em;
   font-weight: bold;
   margin: 0;
   line-height: 1;

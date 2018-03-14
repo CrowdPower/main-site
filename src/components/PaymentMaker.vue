@@ -3,7 +3,7 @@
     <p class="error">{{ err }}</p>
     <input type="number" name="amount" v-model="amount" placeholder="amount" min="0">
     <input type="url" name="url" v-model="url" placeholder="url">
-    <button>Payment</button>
+    <button>Pay Website</button>
   </form>
 </template>
 
@@ -47,8 +47,8 @@ export default {
 
 <style scoped>
 form {
-  min-width: 200px;
-  max-width: 300px;
+  min-width: 300px;
+  max-width: 400px;
 }
 
 .error {
@@ -64,5 +64,9 @@ input {
 
 button {
   float: right;
+}
+
+input {
+  font-size: 1.75em;
 }
 </style>

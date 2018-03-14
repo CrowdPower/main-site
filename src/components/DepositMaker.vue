@@ -2,7 +2,7 @@
   <form @submit.prevent="makeDeposit">
     <p class="error">{{ err }}</p>
     <input type="number" name="amount" v-model="amount" placeholder="amount" min="0">
-    <button>Deposit</button>
+    <button>Make Deposit</button>
   </form>
 </template>
 
@@ -32,7 +32,7 @@ export default {
           this.$emit('update')
         })
         .catch(err => {
-          this.err = 'Error making deposit'
+          this.err = 'Error making deposit: ' + err.response.data.error.message
           console.log(err)
           this.$emit('update')
         })
@@ -43,8 +43,8 @@ export default {
 
 <style scoped>
 form {
-  min-width: 100px;
-  max-width: 150px;
+  min-width: 200px;
+  max-width: 300px;
 }
 
 .error {
@@ -60,5 +60,10 @@ input {
 
 button {
   float: right;
+  width: auto;
+}
+
+input {
+  font-size: 1.75em;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
 <nav>
-  <a href="/#/dashboard"><img src="/static/icon.png" class="icon"></a>
+  <a href="/#/payment"><img src="/static/icon.png" class="icon"></a>
   <a href="/#/payment" :class="[selected === 'payment' ? 'selected' : '', 'text-button']">Payment</a>
   <a href="/#/deposit" :class="[selected === 'deposit' ? 'selected' : '', 'text-button']">Deposit</a>
   <a href="/#/history" :class="[selected === 'history' ? 'selected' : '', 'text-button']">History</a>
