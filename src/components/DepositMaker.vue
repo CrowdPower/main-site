@@ -1,5 +1,5 @@
 <template>
-  <form class="box" @submit.prevent="makeDeposit">
+  <form @submit.prevent="makeDeposit">
     <p class="error">{{ err }}</p>
     <input type="number" name="amount" v-model="amount" placeholder="amount" min="0">
     <button>Deposit</button>
@@ -8,7 +8,6 @@
 
 <script>
 import Utils from './Utils.js'
-import LoadingIcon from './LoadingIcon.vue'
 
 export default {
   props: {
@@ -23,18 +22,20 @@ export default {
       err: ''
     }
   },
-  components: {
-    LoadingIcon
-  },
   methods: {
     makeDeposit: function () {
       this.err = ''
       let toSend = parseInt(this.amount)
       this.amount = 0
-      Utils.post(Utils.makeAbsolute('/v1/users/' + this.username + '/deposit'), { amount: toSend }).catch(err => {
-        this.err = 'Error making deposit'
-        console.log(err)
-      })
+      Utils.post(Utils.makeAbsolute('/v1/users/' + this.username + '/deposit'), { amount: toSend })
+        .then(response => {
+          this.$emit('update')
+        })
+        .catch(err => {
+          this.err = 'Error making deposit'
+          console.log(err)
+          this.$emit('update')
+        })
     }
   }
 }

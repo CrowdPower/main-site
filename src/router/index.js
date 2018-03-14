@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import Home from '@/components/HomePage'
 import Login from '@/components/LoginPage'
 import Dashboard from '@/components/DashboardPage'
+import Payment from '@/components/PaymentPage'
+import Deposit from '@/components/DepositPage'
 import Cookies from 'js-cookie'
 
 Vue.use(Router)
@@ -23,6 +25,16 @@ let router = new Router({
       path: '/dashboard',
       name: 'Dashboard',
       component: Dashboard
+    },
+    {
+      path: '/payment',
+      name: 'Payment',
+      component: Payment
+    },
+    {
+      path: '/deposit',
+      name: 'Deposit',
+      component: Deposit
     }
   ]
 })

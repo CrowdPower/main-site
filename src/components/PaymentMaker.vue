@@ -1,5 +1,5 @@
 <template>
-  <form class="box" @submit.prevent="makePayment">
+  <form @submit.prevent="makePayment">
     <p class="error">{{ err }}</p>
     <input type="number" name="amount" v-model="amount" placeholder="amount" min="0">
     <input type="url" name="url" v-model="url" placeholder="url">
@@ -9,7 +9,6 @@
 
 <script>
 import Utils from './Utils.js'
-import LoadingIcon from './LoadingIcon.vue'
 
 export default {
   props: {
@@ -25,9 +24,6 @@ export default {
       err: ''
     }
   },
-  components: {
-    LoadingIcon
-  },
   methods: {
     makePayment: function () {
       this.err = ''
@@ -35,10 +31,15 @@ export default {
       let toUrl = this.url
       this.amount = 0
       this.url = ''
-      Utils.post(Utils.makeAbsolute('/v1/users/' + this.username + '/payment'), { amount: toSend, url: toUrl }).catch(err => {
-        this.err = 'Error making payment'
-        console.log(err)
-      })
+      Utils.post(Utils.makeAbsolute('/v1/users/' + this.username + '/payment'), { amount: toSend, url: toUrl })
+        .then(() => {
+          this.$emit('update')
+        })
+        .catch(err => {
+          this.err = 'Error making payment: ' + err.response.data.error.message
+          console.log(err)
+          this.$emit('update')
+        })
     }
   }
 }

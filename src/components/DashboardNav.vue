@@ -1,6 +1,8 @@
 <template>
 <nav>
   <a href="/#/dashboard"><img src="/static/icon.png" class="icon"></a>
+  <a href="/#/payment" :class="[selected === 'payment' ? 'selected' : '', 'text-button']">Payment</a>
+  <a href="/#/deposit" :class="[selected === 'deposit' ? 'selected' : '', 'text-button']">Deposit</a>
   <button class="text-button" @click="logOut">Sign Out</button>
 </nav>
 </template>
@@ -9,6 +11,9 @@
 import Cookies from 'js-cookie'
 
 export default {
+  props: {
+    selected: String
+  },
   methods: {
     logOut () {
       Cookies.remove('refreshToken')
