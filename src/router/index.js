@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/HomePage'
 import Login from '@/components/LoginPage'
-import Dashboard from '@/components/DashboardPage'
+import History from '@/components/HistoryPage'
 import Payment from '@/components/PaymentPage'
 import Deposit from '@/components/DepositPage'
 import Cookies from 'js-cookie'
@@ -22,9 +22,9 @@ let router = new Router({
       component: Login
     },
     {
-      path: '/dashboard',
-      name: 'Dashboard',
-      component: Dashboard
+      path: '/history',
+      name: 'History',
+      component: History
     },
     {
       path: '/payment',
@@ -43,14 +43,14 @@ function isAuthenticated () {
   return Cookies.get('refreshToken') && Cookies.get('accessToken') && Cookies.get('username')
 }
 
-let authProtected = ['dashboard']
+let authProtected = ['payment', 'deposit', 'history']
 let redirectToDashboard = ['', 'login']
 
 router.beforeEach((to, from, next) => {
   let path = to.path.split('/')[1]
   if (isAuthenticated()) {
     if (redirectToDashboard.includes(path)) {
-      next({ path: '/dashboard' })
+      next({ path: '/payment' })
     } else {
       next()
     }

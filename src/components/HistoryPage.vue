@@ -1,16 +1,12 @@
 <template>
   <div id="dashboard">
-    <dashboard-nav class="dashboard-nav" />
+    <dashboard-nav class="dashboard-nav" selected="history" />
     <loading-icon id="loader" v-if="!user && !err" />
     <p class="error" v-if="err">{{ err }}</p>
     <div id="panes">
       <div>
         <deposit-info v-if="user && !err" :username="user.username" />
         <payment-info v-if="user && !err" :username="user.username" />
-      </div>
-      <div>
-        <deposit-maker v-if="user && !err" :username="user.username" />
-        <payment-maker v-if="user && !err" :username="user.username" />
       </div>
     </div>
   </div>
@@ -23,8 +19,6 @@ import DashboardNav from './DashboardNav.vue'
 import LoadingIcon from './LoadingIcon.vue'
 import DepositInfo from './DepositInfo.vue'
 import PaymentInfo from './PaymentInfo.vue'
-import DepositMaker from './DepositMaker.vue'
-import PaymentMaker from './PaymentMaker.vue'
 
 export default {
   created () {
@@ -45,9 +39,7 @@ export default {
     DashboardNav,
     LoadingIcon,
     DepositInfo,
-    PaymentInfo,
-    DepositMaker,
-    PaymentMaker
+    PaymentInfo
   }
 }
 </script>
