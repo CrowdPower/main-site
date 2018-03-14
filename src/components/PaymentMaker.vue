@@ -15,12 +15,19 @@ export default {
     username: {
       type: String,
       required: true
+    },
+    prefillUrl: {
+      type: String,
+      required: false
+    },
+    prefillAmount: {
+      required: false
     }
   },
   data () {
     return {
-      amount: 0,
-      url: '',
+      amount: this.prefillAmount || 0,
+      url: this.prefillUrl || '',
       err: ''
     }
   },

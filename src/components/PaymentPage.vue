@@ -7,7 +7,8 @@
       <p class="balance">{{ user.balance }}</p>
       <h3 class="subtitle">Account Balance</h3>
     </div>
-    <payment-maker id="payment-maker" v-if="user && !err" v-on:update="getUser" :username="user.username" />
+    <payment-maker id="payment-maker" v-if="user && !err" v-on:update="getUser"
+      :username="user.username" :prefillUrl="prefillUrl" :prefillAmount="prefillAmount" />
   </div>
 </template>
 
@@ -21,11 +22,15 @@ import PaymentMaker from './PaymentMaker.vue'
 export default {
   created () {
     this.getUser()
+    this.prefillAmount = this.$route.query.amount || 0
+    this.prefillUrl = this.$route.query.url || ''
   },
   data () {
     return {
       user: undefined,
-      err: ''
+      err: '',
+      prefillAmount: 0,
+      prefillUrl: ''
     }
   },
   components: {
