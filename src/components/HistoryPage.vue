@@ -1,5 +1,5 @@
 <template>
-  <div id="dashboard">
+  <div id="history">
     <dashboard-nav class="dashboard-nav" selected="history" />
     <loading-icon id="loader" v-if="!user && !err" />
     <p class="error" v-if="err">{{ err }}</p>

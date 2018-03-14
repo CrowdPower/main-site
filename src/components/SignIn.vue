@@ -43,7 +43,7 @@ export default {
         }
         Cookies.set('accessToken', response.data.data.accessToken)
         Cookies.set('username', this.username)
-        this.$router.push('/dashboard')
+        this.$router.push('/payment')
       }).catch(err => {
         if (err.response && (err.response.status === 401 || err.response.status === 404)) {
           this.generalErr = 'Incorrect username or password'
