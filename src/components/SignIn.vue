@@ -31,7 +31,10 @@ export default {
       this.generalErr = ''
       axios({
         method: 'GET',
-        url: process.env.API_PATH + '/v1/users/' + this.username + '/authorize?password=' + this.password
+        url: process.env.API_PATH + '/v1/users/' + this.username + '/authorize',
+        headers: {
+          Password: this.password
+        }
       }).then(response => {
         if (this.rememberMe) {
           Cookies.set('refreshToken', response.data.data.refreshToken, { expires: 365 })
@@ -42,7 +45,7 @@ export default {
         Cookies.set('username', this.username)
         this.$router.push('/dashboard')
       }).catch(err => {
-        if (err.response.status === 401) {
+        if (err.response && (err.response.status === 401 || err.response.status === 404)) {
           this.generalErr = 'Incorrect username or password'
         } else {
           this.generalErr = 'Connection error'
