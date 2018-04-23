@@ -5,6 +5,7 @@ import Login from '@/components/LoginPage'
 import History from '@/components/HistoryPage'
 import Payment from '@/components/PaymentPage'
 import Deposit from '@/components/DepositPage'
+import Websites from '@/components/WebsitesPage'
 import Cookies from 'js-cookie'
 
 Vue.use(Router)
@@ -35,6 +36,11 @@ let router = new Router({
       path: '/deposit',
       name: 'Deposit',
       component: Deposit
+    },
+    {
+      path: '/websites',
+      name: 'Websites',
+      component: Websites
     }
   ]
 })
@@ -43,7 +49,7 @@ function isAuthenticated () {
   return Cookies.get('refreshToken') && Cookies.get('accessToken') && Cookies.get('username')
 }
 
-let authProtected = ['payment', 'deposit', 'history']
+let authProtected = ['payment', 'deposit', 'history', 'websites']
 let redirectToDashboard = ['', 'login']
 
 router.beforeEach((to, from, next) => {
