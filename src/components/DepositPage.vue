@@ -38,7 +38,9 @@ export default {
       Utils.get(Utils.makeAbsolute('/v1/users/' + Cookies.get('username'))).then(response => {
         this.user = response.data
       }).catch(err => {
-        console.log(err)
+        if (err.response.data.error.code === 404) {
+          Utils.clearData()
+        }
         this.err = 'Could not authenticate with server'
       })
     }

@@ -1,6 +1,12 @@
 import axios from 'axios'
 import Cookies from 'js-cookie'
 
+function clearData () {
+  Cookies.remove('username')
+  Cookies.remove('accessToken')
+  Cookies.remove('refreshToken')
+}
+
 function updateTokens () {
   return axios({
     method: 'GET',
@@ -50,6 +56,7 @@ function request (params, url) {
 }
 
 export default {
+  clearData,
   get,
   post,
   makeAbsolute
